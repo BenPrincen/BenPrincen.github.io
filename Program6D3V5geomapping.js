@@ -1,5 +1,5 @@
-let GEO_JSON_1 = "../geo_data/japan/geojson/level_1/ogr_japan_1.json";
-let JPN_POP_DEN_CSV = "../jpn_prefecture_pop.csv"; 
+let GEO_JSON_1 = "/geo_data/japan/geojson/level_1/ogr_japan_1.json";
+let JPN_POP_DEN_CSV = "/jpn_prefecture_pop.csv"; 
 
 //Width and height
 var w = 500;
