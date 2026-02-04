@@ -2,14 +2,64 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Japan Population Density</title>
-		<script src="https://d3js.org/d3.v5.js"></script>
-        <script src="https://d3js.org/d3-array.v2.min.js"></script>
-        <script src="https://d3js.org/d3-geo.v2.min.js"></script>
+		<title>Will you be my Valentine?</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				font-family: Georgia, "Times New Roman", serif;
+				background: linear-gradient(135deg, #fff0f5 0%, #ffe4ec 50%, #ffd6e0 100%);
+			}
+			h1 {
+				color: #8b2942;
+				font-size: 2.5rem;
+				text-align: center;
+				margin-bottom: 2.5rem;
+				text-shadow: 1px 1px 2px rgba(139, 41, 66, 0.2);
+			}
+			.buttons {
+				display: flex;
+				gap: 1.5rem;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+			.btn {
+				padding: 1rem 2.5rem;
+				font-size: 1.25rem;
+				font-family: inherit;
+				border: none;
+				border-radius: 50px;
+				cursor: pointer;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+			}
+			.btn-yes {
+				background: linear-gradient(145deg, #c41e50, #a01840);
+				color: white;
+				box-shadow: 0 4px 15px rgba(196, 30, 80, 0.4);
+			}
+			.btn-no {
+				background: linear-gradient(145deg, #8b7355, #6b5344);
+				color: white;
+				box-shadow: 0 4px 15px rgba(107, 83, 68, 0.3);
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Japan Population Density 2015</h1>
-        <script src="Program6D3V5geomapping.js"></script>
-		<h2>Created by: Benjamin Princen</h2>
+		<h1>Will you be my Valentine?</h1>
+		<div class="buttons">
+			<button class="btn btn-yes" type="button">Yes</button>
+			<button class="btn btn-no" type="button">No</button>
+		</div>
 	</body>
 </html>
