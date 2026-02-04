@@ -53,13 +53,84 @@
 				color: white;
 				box-shadow: 0 4px 15px rgba(107, 83, 68, 0.3);
 			}
+			.success-block {
+				display: none;
+				flex-direction: column;
+				align-items: center;
+				gap: 1.5rem;
+			}
+			.success-block.visible {
+				display: flex;
+			}
+			.success-block img {
+				max-width: 280px;
+				max-height: 280px;
+				object-fit: contain;
+				border-radius: 16px;
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+			}
+			.yay-message {
+				color: #c41e50;
+				font-size: 4rem;
+				font-weight: bold;
+				letter-spacing: 0.2em;
+				text-shadow: 2px 2px 4px rgba(196, 30, 80, 0.3);
+			}
+			.yay-subtitle {
+				color: #8b2942;
+				font-size: 1.25rem;
+				text-align: center;
+			}
+			.question-block.hidden {
+				display: none;
+			}
+			.wrong-answer-img {
+				display: none;
+				max-width: 280px;
+				max-height: 280px;
+				object-fit: contain;
+				border-radius: 16px;
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+				margin: 0 auto 0.5rem auto;
+			}
+			.wrong-answer-img.visible {
+				display: block;
+			}
 		</style>
 	</head>
 	<body>
-		<h1>Will you be my Valentine?</h1>
-		<div class="buttons">
-			<button class="btn btn-yes" type="button">Yes</button>
-			<button class="btn btn-no" type="button">No</button>
+		<div class="question-block" id="question-block">
+			<img class="wrong-answer-img" id="wrong-answer-img" src="dog_valentines_angry.png" alt="Angry dog">
+			<h1 id="question">Will you be my Valentine?</h1>
+			<div class="buttons">
+				<button class="btn btn-yes" type="button">Yes</button>
+				<button class="btn btn-no" type="button">No</button>
+			</div>
 		</div>
+		<div class="success-block" id="success-block">
+			<img src="dog_valentines_happy.png" alt="Cute dog">
+			<div class="yay-message">YAYY</div>
+			<div class="yay-subtitle" id="yay-subtitle"></div>
+		</div>
+		<script>
+			var noCount = 0;
+			document.querySelector(".btn-yes").addEventListener("click", function () {
+				document.getElementById("question-block").classList.add("hidden");
+				var subtitle = document.getElementById("yay-subtitle");
+				if (noCount > 0) {
+					var times = noCount === 1 ? "1 time" : noCount + " times";
+					subtitle.textContent = "but you said no " + times + " until you said yes :(";
+					subtitle.style.display = "block";
+				} else {
+					subtitle.style.display = "none";
+				}
+				document.getElementById("success-block").classList.add("visible");
+			});
+			document.querySelector(".btn-no").addEventListener("click", function () {
+				noCount++;
+				document.getElementById("wrong-answer-img").classList.add("visible");
+				document.getElementById("question").textContent = "WRONG ANSWER TRY AGAIN";
+			});
+		</script>
 	</body>
 </html>
