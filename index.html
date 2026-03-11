@@ -63,14 +63,23 @@
 
           <label>
             Category
-            <input
+            <select
               id="category"
               name="category"
-              type="text"
-              maxlength="50"
-              placeholder="Groceries"
               required
-            />
+            >
+              <option value="">Choose a category</option>
+              <option value="Groceries">Groceries</option>
+              <option value="Dining">Dining</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Housing">Housing</option>
+              <option value="Utilities">Utilities</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Travel">Travel</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
 
           <label>

@@ -8,7 +8,7 @@ Simple GitHub Pages-friendly spending tracker with two modes:
 ## How to use
 
 1. Open `index.html` locally, or deploy the repo with GitHub Pages.
-2. Add entries in the input view.
+2. Add entries in the input view using one of the predefined categories.
 3. Switch to the current month view to see totals.
 4. Use `Export JSON` or `Export CSV` to save the data to a file.
 5. Use `Import File` to load a previously exported file.

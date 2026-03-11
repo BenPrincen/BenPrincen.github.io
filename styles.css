@@ -10,7 +10,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -137,7 +138,8 @@ input {
   font-weight: 700;
 }
 
-.spending-form input {
+.spending-form input,
+.spending-form select {
   width: 100%;
   border: 1px solid #d9e2ec;
   border-radius: 10px;

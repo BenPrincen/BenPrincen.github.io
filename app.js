@@ -1,4 +1,16 @@
 const STORAGE_KEY = "spending-tracker-entries";
+const CATEGORIES = [
+  "Groceries",
+  "Dining",
+  "Transportation",
+  "Housing",
+  "Utilities",
+  "Entertainment",
+  "Healthcare",
+  "Shopping",
+  "Travel",
+  "Other",
+];
 
 const state = {
   entries: loadEntries(),
@@ -44,7 +56,7 @@ function handleSubmit(event) {
   event.preventDefault();
 
   const amount = Number.parseFloat(amountInput.value);
-  const category = categoryInput.value.trim();
+  const category = normalizeCategory(categoryInput.value.trim());
   const spentAt = spentAtInput.value;
 
   if (!Number.isFinite(amount) || amount <= 0 || !category || !spentAt) {
@@ -247,7 +259,7 @@ function normalizeImportedEntries(value) {
   return value
     .map((entry) => {
       const amount = Number.parseFloat(entry.amount);
-      const category = String(entry.category || "").trim();
+      const category = normalizeCategory(String(entry.category || "").trim());
       const spentAt = String(entry.spentAt || "").trim();
 
       if (!Number.isFinite(amount) || amount <= 0 || !category || !isIsoDate(spentAt)) {
@@ -340,6 +352,14 @@ function todayForInput() {
   const today = new Date();
   const offset = today.getTimezoneOffset() * 60 * 1000;
   return new Date(today.getTime() - offset).toISOString().slice(0, 10);
+}
+
+function normalizeCategory(value) {
+  if (!value) {
+    return "";
+  }
+
+  return CATEGORIES.includes(value) ? value : "Other";
 }
 
 function isIsoDate(value) {
