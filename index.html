@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monthly Spending Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">Spending Tracker</p>
+        <h1>Track purchases and review this month's spending.</h1>
+        <p class="hero-copy">
+          Add an amount and category, save entries in your browser, and
+          import or export them as JSON or CSV files.
+        </p>
+      </section>
+
+      <section class="panel controls-panel">
+        <div class="mode-switch" role="tablist" aria-label="App views">
+          <button class="mode-button active" data-mode="entry" type="button">
+            Input Spending
+          </button>
+          <button class="mode-button" data-mode="summary" type="button">
+            Current Month
+          </button>
+        </div>
+
+        <div class="utility-actions">
+          <button id="export-json" class="secondary-action" type="button">
+            Export JSON
+          </button>
+          <button id="export-csv" class="secondary-action" type="button">
+            Export CSV
+          </button>
+          <label class="secondary-action file-input-label" for="import-file">
+            Import File
+          </label>
+          <input id="import-file" type="file" accept=".json,.csv" />
+        </div>
+      </section>
+
+      <section id="entry-mode" class="mode-panel panel">
+        <div class="panel-heading">
+          <h2>Add spending</h2>
+          <p>Entries are timestamped and stored locally for GitHub Pages hosting.</p>
+        </div>
+
+        <form id="spending-form" class="spending-form">
+          <label>
+            Amount
+            <input
+              id="amount"
+              name="amount"
+              type="number"
+              min="0.01"
+              step="0.01"
+              placeholder="12.99"
+              required
+            />
+          </label>
+
+          <label>
+            Category
+            <input
+              id="category"
+              name="category"
+              type="text"
+              maxlength="50"
+              placeholder="Groceries"
+              required
+            />
+          </label>
+
+          <label>
+            Date
+            <input id="spent-at" name="spentAt" type="date" required />
+          </label>
+
+          <button class="primary-action" type="submit">Save Entry</button>
+        </form>
+
+        <p
+          id="status-message"
+          class="status-message"
+          aria-live="polite"
+          data-state="success"
+        ></p>
+
+        <div class="entries-header">
+          <h3>Recent entries</h3>
+          <button id="clear-all" class="danger-action" type="button">
+            Clear All Entries
+          </button>
+        </div>
+        <div id="recent-entries" class="entries-list empty-state">
+          No spending has been logged yet.
+        </div>
+      </section>
+
+      <section id="summary-mode" class="mode-panel panel hidden">
+        <div class="panel-heading">
+          <h2>This month</h2>
+          <p>Totals update automatically from the spending history.</p>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <span class="summary-label">Total spent</span>
+            <strong id="monthly-total" class="summary-value">$0.00</strong>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Entries</span>
+            <strong id="monthly-count" class="summary-value">0</strong>
+          </article>
+          <article class="summary-card">
+            <span class="summary-label">Top category</span>
+            <strong id="top-category" class="summary-value">None yet</strong>
+          </article>
+        </div>
+
+        <div class="panel-heading">
+          <h3>Category breakdown</h3>
+          <p>Only entries from the current calendar month are shown.</p>
+        </div>
+        <div id="chart" class="chart empty-state">
+          Add spending in the current month to see the chart.
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
